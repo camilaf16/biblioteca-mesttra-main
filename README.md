@@ -1,6 +1,6 @@
 # 📚 Biblioteca Inicial em JavaScript
 
-Este repositório contém um projeto inicial de biblioteca, desenvolvido com o objetivo de praticar JavaScript, lógica de programação e versionamento de código com Git/GitHub.
+Este repositório contém um projeto inicial de biblioteca, desenvolvido com o objetivo de praticar JavaScript e versionamento de código com Git/GitHub.
 Mais do que o resultado final, o projeto prioriza o processo de aprendizado, a experimentação e a evolução contínua do código.
 
 ## 🎯 Objetivos do Projeto
