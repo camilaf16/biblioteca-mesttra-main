@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cadastro de Aluno</title>
+        <title>Cadastro de Livros</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     </head>
@@ -94,7 +94,7 @@
                 <h5 class="mb-0 fw-bold">Dados do Livro</h5>
             </div>
             <div class="card-body p-4">
-                <form onsubmit="cadastrarAluno(event)">
+                <form onsubmit="cadastrarLivros(event)">
                     <!-- Linha 1: Nome, CPF e Data Cadastro -->
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -109,22 +109,27 @@
                         </div>
                         <div class="col-md-4">
                             <label for="anoPublicacao" class="form-label fw-bold text-secondary">Ano:</label>
-                            <input type="date" name="anoPublicacao" id="anoPublicacao" class="form-control form-control-lg" required>
+                            <input type="number" name="anoPublicacao" id="anoPublicacao" class="form-control form-control-lg" required>
                         </div>
                     </div>
 
                     <!-- Linha 2: Endereço, Email, Telefone -->
-                    <div class="row mb-4">
+                    <div class="row mb-4">                       
                         <div class="col-md-4">
-                            <label for="endereco" class="form-label fw-bold text-secondary">Autor:</label>
-                            <input type="text" name="endereco" id="autor" class="form-control form-control-lg"
+                            <label for="autor" class="form-label fw-bold text-secondary">Autor:</label>
+                            <input type="text" name="autor" id="autor" class="form-control form-control-lg"
                             placeholder="Digite o nome do autor" required>
                         </div>
                         <div class="col-md-4">
                             <label for="editora" class="form-label fw-bold text-secondary">Editora:</label>
-                            <input type="email" name="editora" id="editora" class="form-control form-control-lg"
+                            <input type="text" name="editora" id="editora" class="form-control form-control-lg"
                             placeholder="Digite o nome da editora" required>
-                        </div>                        
+                        </div>
+                        <div class="col-md-4">
+                            <label for="numeroPaginas" class="form-label fw-bold text-secondary">Número de Páginas:</label>
+                            <input type="number" name="numeroPaginas" id="numeroPaginas" class="form-control form-control-lg"
+                            placeholder="Digite o número de páginas" required>
+                        </div>
                     </div>
 
                     <!-- linha 3 - Botoes de ação -->
@@ -150,6 +155,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="./aluno.js"></script>
+    <script src="./livro.js"></script>
     </body>
 </html>

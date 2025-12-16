@@ -27,5 +27,17 @@
       "email": "email@email.com",
       "tel": "119684984"
     }
+  ],
+  "livros": [ {
+    "id": "1",
+    "titulo": "Dom Casmurro",
+    "isbn": "978-85-359-0277-1",
+    "anoPublicacao": "1899",
+    "numeroPaginas": "256",
+    "idAutor": "1",
+    "idEditora": "1",
+    "idCategoria": "1"
+}
   ]
 }
+

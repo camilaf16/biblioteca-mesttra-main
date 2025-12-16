@@ -8,22 +8,24 @@ async function cadastrarLivros(event) {
     const titulo = document.getElementById('titulo').value;
     const isbn = document.getElementById('isbn').value;
     const anoPublicacao = document.getElementById('anoPublicacao').value;
+    const numeroPaginas = document.getElementById('numeroPaginas').value;
     const autor = document.getElementById('autor').value;
-    const email = document.getElementById('email').value;
-    const tel = document.getElementById('tel').value;
+    const editora = document.getElementById('editora').value;
+    
 
     //LOGICA QUE ENVIA O QUE FOI DIGITADO PARA O BANCO DE DADOS VIA API
-    const apiUrl = 'http://localhost:3000/alunos';
+    const apiUrl = 'http://localhost:3000/livros';
 
-    // Monto o objeto aluno que vai ser enviado via api atraves do metodo [POST]
+    // Monto o objeto livro que vai ser enviado via api atraves do metodo [POST]
 
     const livro = {
         titulo,
         isbn,
         anoPublicacao,
+        numeroPaginas,
         autor,
-        email,
-        tel
+        editora,
+        
     }
 
     //[GET], [POST], [PUT], [DELETE]
@@ -47,9 +49,11 @@ async function cadastrarLivros(event) {
 
 async function listarlivros() {
     // promisse 1 (requisicao foi ok ou nao)
-    const response = await fetch('http://localhost:3000/alunos'); //GET - BUSCAR 
+    const response = await fetch('http://localhost:3000/livros'); //GET - BUSCAR 
     // promisse 2 (o resultado da requisicao)
     const livros = await response.json(); 
+
+    tabelaResultado.innerHTML = '';
 
     livros.forEach(function (livro) {
         tabelaResultado.insertAdjacentHTML('beforeend',
@@ -58,9 +62,10 @@ async function listarlivros() {
                 <td>${livro.id}</td>
                 <td>${livro.titulo}</td>
                 <td>${livro.isbn}</td>
-                <td>${livro.email}</td>
-                <td>${livro.tel}</td>
-                <td>${livro.Ano}</td>
+                <td>${livro.anoPublicacao}</td>
+                <td>${livro.numeroPaginas}</td>
+                <td>${livro.autor}</td>
+                <td>${livro.editora}</td>
                 <td>
                     <button class="btn btn-sm btn-info text-white me-1">
                         <i class="bi bi-eye-fill"></i>
@@ -68,7 +73,7 @@ async function listarlivros() {
                     <a href="./edicao.html?id=${livro.id}" class="btn btn-sm btn-warning text-white me-1">
                         <i class="bi bi-pencil-fill"></i>
                     </a>
-                    <button class="btn btn-sm btn-danger" onclick="excluirAluno('${livro.id}')">
+                    <button class="btn btn-sm btn-danger" onclick="excluirLivro('${livro.id}')">
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </td>
@@ -78,15 +83,15 @@ async function listarlivros() {
     })
 }
 
-async function excluirLivros(id) {
-    const apiUrl = `http://localhost:3000/alunos/${id}`;
+async function excluirLivro(id) {
+    const apiUrl = `http://localhost:3000/livros/${id}`;
     
     // Estrutura da requisicao do DELETE
     const request = new Request (apiUrl, {
         method: 'DELETE'
     })
 
-    if(confirm(`Deseja excluir o usuario ${id} ?`)){
+    if(confirm(`Deseja excluir o livro ${id} ?`)){
         const response = await fetch(request);
         const livro = await response.json();
         
