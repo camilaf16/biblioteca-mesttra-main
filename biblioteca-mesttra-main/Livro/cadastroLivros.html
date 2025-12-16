@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mestra Biblioteca - Alunos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
-<body>
-    <!-- Menu de navegação -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Aluno</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    </head>
+    <body>
+    <!-- MENU DE NAVEGACAO -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a href="../index.html" class="navbar-brand fw-bold fs-4">
@@ -37,7 +37,7 @@
                         <ul class="dropdown-menu">
                             <div class="row">
                                 <div class="col">
-                                    <li><a href="./aluno.html" class="dropdown-item">
+                                    <li><a href="./alunos.html" class="dropdown-item">
                                     <i class="bi bi-person-badge me-2"></i>Aluno
                                     </a></li>
                                     <li><a class="dropdown-item" href="/frontend/cadastro/autor.html">
@@ -75,47 +75,81 @@
             </div>
         </div>
     </nav>
-
-    <!-- Conteudo Principal -->
+    
+    <!-- Conteudo principal -->
     <main class="container my-5 flex-grow-1">
-        <!-- Cabeçalho da pagina -->
+        
+        <!-- cabeçalho da pagina -->
         <section class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h1 class="fw-bold">Gerenciamento de Alunos</h1>
-                <p class="text-muted mb-0">Cadastre e consulte os alunos do sistema.</p>
+                <h1 class="fw-bold">Cadastro de Livros</h1>
+                <p class="text-muted mb-0">Preencha os dados abaixo para cadastrar um novo Livro.</p>
             </div>
-            <a href="./cadastro.html" class="btn btn-success btn-lg">Novo Aluno</a>
+            <a href="./livros.html" class="btn btn-outline-secondary btn-lg">Voltar para lista</a>
         </section>
 
-        <!-- Tabela de alunos -->
+        <!-- Formulario de cadastro -->
         <section class="card shadow-sm border-0">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0 fw-bold">Listagem de Alunos cadastrados.</h5>
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0 fw-bold">Dados do Livro</h5>
             </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Id</th>
-                                <th>Nome Completo</th>
-                                <th>CPF</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
-                                <th>Data de cadastro</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabelaResultado">
-                        </tbody>
-                    </table>
-                </div>
+            <div class="card-body p-4">
+                <form onsubmit="cadastrarAluno(event)">
+                    <!-- Linha 1: Nome, CPF e Data Cadastro -->
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label for="titulo" class="form-label fw-bold text-secondary">Título:</label>
+                            <input type="text" name="titulo" id="titulo" class="form-control form-control-lg"
+                            placeholder="Digite o título do livro" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="isbn" class="form-label fw-bold text-secondary">ISBN:</label>
+                            <input type="text" name="isbn" id="isbn" class="form-control form-control-lg"
+                            placeholder="XXX-XX-XXX-XXXX-X" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="anoPublicacao" class="form-label fw-bold text-secondary">Ano:</label>
+                            <input type="date" name="anoPublicacao" id="anoPublicacao" class="form-control form-control-lg" required>
+                        </div>
+                    </div>
+
+                    <!-- Linha 2: Endereço, Email, Telefone -->
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label for="endereco" class="form-label fw-bold text-secondary">Autor:</label>
+                            <input type="text" name="endereco" id="autor" class="form-control form-control-lg"
+                            placeholder="Digite o nome do autor" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="editora" class="form-label fw-bold text-secondary">Editora:</label>
+                            <input type="email" name="editora" id="editora" class="form-control form-control-lg"
+                            placeholder="Digite o nome da editora" required>
+                        </div>                        
+                    </div>
+
+                    <!-- linha 3 - Botoes de ação -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type= "submit" class="btn btn-success btn-lg px-5 me-3">Cadastrar Livro</button>
+                            <button type="reset" class="btn btn-outline-secondary btn-lg px-4">Limpar Formulário</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dataInput = document.getElementById('datacadastro')
+            if (dataInput) {
+                var hoje = new Date().toISOString().split('T')[0];
+                dataInput.value = hoje
+            }
+        })
 
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="./aluno.js"></script>
-</body>
+    </body>
 </html>
